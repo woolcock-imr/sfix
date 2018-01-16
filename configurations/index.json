@@ -1,0 +1,10 @@
+{
+	"api_path_development":"https://cbs.wappsystem.com/dev/",
+	"api_path_production":"https://rt.woolcock.org.au/",
+	"default_production":"Yes",
+    "panels":{
+		"website":		{"url":"","modules":["modules/website/module.json"]},
+		"sfix":			{"url":"modules/panel/sfix.html","modules":["modules/participant-and-others/module.json","modules/edc/module.json"]},
+		"sfix-child":	{"url":"modules/panel/sfix.child.html",	"modules":["modules/participant-and-others/module.json","modules/edc/module.json"]}
+	}
+}

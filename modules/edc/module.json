@@ -1,0 +1,6 @@
+{
+	"modules":
+	{
+		"adverse-event":	  {"table_id":"20011369","url":"/modules/edc/task/adverse-event.html", "name_for_search":"Adverse event"}
+	}
+}
