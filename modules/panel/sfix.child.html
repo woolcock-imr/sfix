@@ -41,6 +41,7 @@
 					return;
 				}
 				$vm.module_list[prefix+m].alert='1';
+				alert(prefix+m)
 				$vm.nav_load_module(prefix+m,"",{participant_uid:record.UID});
 			}
 		})

@@ -1,0 +1,42 @@
+<section>
+    VmInclude:__COMPONENT__/grid/grid.v3.html
+</section>
+<script>
+    function F__ID(){
+        //-------------------------------------
+        VmInclude:__COMPONENT__/grid/grid.v3.js
+
+        VmInclude:__CURRENT_PATH__/task.js
+        //-------------------------------------
+        _task_fields="SES1,SES2,SES3,SES4,SES5,SES6,SES7,SES8,SES9,SES10,SES";
+        _fields="_Form|form_module,Status|S2,Notes|NT,Participant,"+_task_fields;
+        _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
+        //-------------------------------------
+        $('#D__ID').on('load',function(){  _set_req(); _request_data(); })
+        $('#D__ID').on('back',function(){  _set_req(); _request_data(); })
+        //-------------------------------------
+        _cell_render=function(records,I,field,td,set_value,source){
+            switch(field){
+                case 'SES':
+                    records[I].vm_readonly[field]=true;
+                break;
+            }
+            _default_cell_render(records,I,field,td,set_value,source);
+        }
+        //-------------------------------------
+        _before_submit=function(record,dbv){
+            record.SES=(parseInt(record.SES1)+parseInt(record.SES2)+parseInt(record.SES3)+parseInt(record.SES4)+parseInt(record.SES5)+parseInt(record.SES6)+parseInt(record.SES7)+parseInt(record.SES8)+parseInt(record.SES9)+parseInt(record.SES10)).toString();
+            return _set_status_and_participant(record,dbv);
+        }
+    }
+</script>
+<style>
+    VmInclude:__COMPONENT__/grid/grid.v3.css
+    ul.ui-autocomplete.ui-menu{font-size:12px}
+    .ui-autocomplete li:hover{
+        color:White;
+        background:#96B202;
+        font-weight:normal;
+        outline:none;
+    }
+</style>
