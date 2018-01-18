@@ -13,22 +13,7 @@
 			$('#info__ID').text(info);
 		})
 		//--------------------------------------------------------
-		/*
 		var prefix=$vm.module_list[$vm.vm['__ID'].name].prefix; if(prefix==undefined) prefix="";
-		//-------------------------------------
-		$('#page__ID li').on('click',function(){
-			var m=$(this).attr('module');
-			if(m!=undefined){
-				if($vm.module_list[prefix+m]==undefined){
-					alert(prefix+m +" is not in the module list.");
-					return;
-				}
-				$vm.load_module_by_name(prefix+m,$vm.root_layout_content_slot,{participant_uid:record.UID,participant_name:record.Study_ID})
-			}
-		})
-		*/
-		//--------------------------------------------------------
-		var prefix=$vm.vm["__ID"].name+"_";
 		$('#panel__ID li').on('click',function(){
 			if( $(this).hasClass( 'not_allowed__ID' )===true){
 				  alert("No permission!");
@@ -40,8 +25,7 @@
 					alert(prefix+m +" is not in the module list.");
 					return;
 				}
-				$vm.module_list[prefix+m].alert='1';
-				alert(prefix+m)
+				//$vm.module_list[prefix+m].alert='1';
 				$vm.nav_load_module(prefix+m,"",{participant_uid:record.UID});
 			}
 		})

@@ -1,9 +1,10 @@
 //-------------------------------------
 var prefix=$vm.module_list[$vm.vm['__ID'].name].prefix; if(prefix==undefined) prefix="";
 //-------------------------------------
-var participant_pid=_mlist[prefix+'participant'].table_id;
-var notes_pid=_mlist[prefix+'edc-notes'].table_id;
-var sql_participant="@('Screening_ID')";
+var participant_pid=$vm.module_list[prefix+'participant'].table_id;
+var notes_pid=$vm.module_list[prefix+'edc-notes'].table_id;
+//var sql_participant="@('Initials')";
+var sql_participant="JSON_VALUE(Information,'$.Initials')";
 //-------------------------------------
 _record_type="s2";
 var _task_fields='';
@@ -51,7 +52,7 @@ _set_req=function(){
     var sql="with notes as (select PUID,NT=S1,NC=S2,NRowNum=row_number() over (PARTITION BY PUID order by ID DESC) from [FORM-"+notes_pid+"] where ppid="+_db_pid+")";
     sql+=",participant as (select Site=S1,ParticipantUID=UID,sql_participant="+sql_participant+" from [FORM-"+participant_pid+"]"+site_sql_where+participant_where+" )";
     sql+=",task as (select ID,UID,PUID,S3,Site=participant.Site,Information,sql_participant,DateTime,Author,RowNum=row_number() over (order by ID DESC) from [FORM-"+_db_pid+"-@S1] join participant on PUID=ParticipantUID)";
-    sql+="select ID,S3,UID,Site,Information,Participant=sql_participant,DateTime,Author,RowNum,NT,NC,dirty=0, valid=1 from task left join notes on UID=notes.PUID and NRowNum=1 where RowNum between @I6 and @I7";
+    sql+="select Information,ID,S3,UID,Site,Participant=sql_participant,DateTime,Author,RowNum,NT,NC,dirty=0, valid=1 from task left join notes on UID=notes.PUID and NRowNum=1 where RowNum between @I6 and @I7";
     var sql_n="with participant as (select Site=S1,ParticipantUID=UID from [FORM-"+participant_pid+"]"+site_sql_where+" )";
     sql_n+=" select count(ID) from [FORM-"+_db_pid+"-@S1] join participant on PUID=ParticipantUID";
 
@@ -73,8 +74,8 @@ var _default_cell_render=function(records,I,field,td,set_value,source){
                 td.autocomplete({
                     minLength:0,
                     source:function(request,response){
-                        var sql="with tb as (select name="+sql_participant+",value2=UID,value3=S1 from [TABLE-"+participant_pid+"])";
-                        sql+=" select top 10 name,value=name,value2,value3 from tb where Name like '%'+@S1+'%' ";
+                        var sql="with tb as (select name="+sql_participant+",value2=UID from [TABLE-"+participant_pid+"])";
+                        sql+=" select top 10 name,value=name,value2,value3=name from tb where Name like '%'+@S1+'%' ";
                         $VmAPI.request({data:{cmd:'auto',s1:request.term,sql:sql,minLength:0},callback:function(res){
                             response($vm.autocomplete_list(res.table));
                         }});

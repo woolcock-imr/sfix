@@ -21,7 +21,6 @@
     function F__ID(){
         //---------------------------------------------
 		var prefix=$vm.module_list[$vm.vm['__ID'].name].prefix; if(prefix==undefined) prefix="";
-		//-------------------------------------
 		var setup_pid=$vm.module_list[$vm.vm['__ID'].name].table_id;
 		var record;
 		var q_list;
@@ -33,17 +32,17 @@
 		})
 		//---------------------------------------------
 		var setup=function(txt){
-			//q_list=$vm.app_config.quest_list;
 			q_list=$vm.module_list[prefix+"quest_list"].list;
-			record=$vm.vm['__ID'].op.record;
+			record=$vm.vm['__ID'].op.input.record;
             $('#Login_ID__ID').val(record.UID+"-"+setup_pid);
-            $('#Participant__ID').val(record.Subject_Initials+" "+record.DOB);
+            $('#Participant__ID').val(record.Initials);
             $('#Password__ID').val('');
             load_data();
         }
         //-------------------------------------
         var load_data=function(){
-            var sql="select top 1 Login_ID= @('Login_ID'),Password= @('Password'),List= @('List') from [TABLE-"+setup_pid+"] where PUID="+record.UID;
+            var sql="select top 1 Login_ID=@('Login_ID'),Password= @('Password'),List= @('List') from [TABLE-"+setup_pid+"] where PUID="+record.UID;
+			sql=sql.replace(/@\('/g,"JSON_VALUE(Information,'$.");
             var req_data={ cmd:"query_records",sql:sql}
             $VmAPI.request({data:req_data,callback:function(res){
                 if(res.records.length>0){
@@ -72,14 +71,9 @@
                 var sublist=q_list[visit];
                 for(i in sublist){
                     No++;
-                    if($vm.module_list[prefix+sublist[i]]!==undefined){
-                        pid=$vm.module_list[prefix+sublist[i]].table_id;
-                        task=$vm.module_list[prefix+sublist[i]].task;
-                	    txt+="<tr><td>"+No+"</td><td>"+pid+"</td><td>"+tab+dot+task+"</td><td><input id=task"+pid+" type=checkbox /></td></tr>";
-                    }
-                    else{
-						alert(prefix+sublist[i] +' is not in the module list.')
-					}
+                    pid=sublist[i].table_id;
+                    task=sublist[i].task_name;
+            	    txt+="<tr><td>"+No+"</td><td>"+pid+"</td><td>"+tab+dot+task+"</td><td><input id=task"+pid+" type=checkbox /></td></tr>";
                 }
             }
             $('#table_grid__ID').html(txt);
@@ -91,13 +85,13 @@
                 var sublistA=q_list[data_visit];
                 if( $(this).prop('checked')==true){
                     for(k in sublistA){
-                        var pid=$vm.module_list[prefix+sublistA[k]].table_id;
+						var pid=sublistA[k].table_id;
                         $("#task"+pid).prop('checked',true);
                     }
                 }
                 else{
                     for(k in sublistA){
-                        var pid=$vm.module_list[prefix+sublistA[k]].table_id;
+						var pid=sublistA[k].table_id;
 						$("#task"+pid).prop('checked',false);
                     }
                 }
@@ -162,17 +156,15 @@
         })
         //---------------------------------------------
         var add_record=function(row_data,dbv){
-            var req={cmd:"add_record",db_pid:setup_pid.toString(),data:row_data,dbv:dbv};
+            var req={cmd:"add_json_record",db_pid:setup_pid.toString(),data:row_data,dbv:dbv};
             $VmAPI.request({data:req,callback:function(res){
-                //$('#back__ID').trigger('click');
 				window.history.go(-1);
             }});
         }
         //---------------------------------------------
         var modify_record=function(row_data,dbv,rid){
-            var req={cmd:"modify_record",rid:rid,db_pid:setup_pid.toString(),data:row_data,dbv:dbv};
+            var req={cmd:"modify_json_record",rid:rid,db_pid:setup_pid.toString(),data:row_data,dbv:dbv};
             $VmAPI.request({data:req,callback:function(res){
-                //$('#back__ID').trigger('click');
 				window.history.go(-1);
             }});
         }

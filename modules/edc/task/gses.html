@@ -8,8 +8,8 @@
 
         VmInclude:__CURRENT_PATH__/task.js
         //-------------------------------------
-        _task_fields="SES1,SES2,SES3,SES4,SES5,SES6,SES7,SES8,SES9,SES10,SES";
-        _fields="_Form|form_module,Status|S2,Notes|NT,Participant,"+_task_fields;
+        _task_fields="gses_1,SES2,SES3,SES4,SES5,SES6,SES7,SES8,SES9,SES10,SES";
+        _fields="_Form,Status|S3,Notes|NT,Participant,"+_task_fields;
         _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
         //-------------------------------------
         $('#D__ID').on('load',function(){  _set_req(); _request_data(); })
