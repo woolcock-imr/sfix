@@ -51,23 +51,27 @@
 				"Week 1":[
 					{"table_id":"20011373","task_name":"Week 1 - Insomnia Severity Index"},
 					{"table_id":"20011378","task_name":"Week 1 - Epworth Sleepiness Scale"},
-					{"table_id":"20011383","task_name":"Week 1 - Flinders Fatigue Scale"}
+					{"table_id":"20011383","task_name":"Week 1 - Flinders Fatigue Scale"},
+					{"table_id":"20011389","task_name":"Week 1 - TENS – Task "}
 				],
 				"Week 2":[
 					{"table_id":"20011374","task_name":"Week 2 - Insomnia Severity Index"},
 					{"table_id":"20011379","task_name":"Week 2 - Epworth Sleepiness Scale"},
-					{"table_id":"20011384","task_name":"Week 2 - Flinders Fatigue Scale"}
+					{"table_id":"20011384","task_name":"Week 2 - Flinders Fatigue Scale"},
+					{"table_id":"20011390","task_name":"Week 2 - TENS – Task "}
 				],
 				"Week 3":[
 					{"table_id":"20011375","task_name":"Week 3 - Insomnia Severity Index"},
 					{"table_id":"20011380","task_name":"Week 3 - Epworth Sleepiness Scale"},
-					{"table_id":"20011385","task_name":"Week 3 - Flinders Fatigue Scale"}
+					{"table_id":"20011385","task_name":"Week 3 - Flinders Fatigue Scale"},
+					{"table_id":"20011391","task_name":"Week 3 - TENS – Task "}
 				],
 				"Week 6":[
 					{"table_id":"20011376","task_name":"Week 6 - Insomnia Severity Index"},
 					{"table_id":"20011381","task_name":"Week 6 - Epworth Sleepiness Scale"},
 					{"table_id":"20011386","task_name":"Week 6 - Flinders Fatigue Scale"},
-					{"table_id":"20011388","task_name":"Week 6 - DASS-22"}
+					{"table_id":"20011388","task_name":"Week 6 - DASS-22"},
+					{"table_id":"20011392","task_name":"Week 6 - TENS – Interface "}
 				]
 			}
 		}
