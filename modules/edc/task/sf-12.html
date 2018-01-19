@@ -9,7 +9,7 @@
         VmInclude:__CURRENT_PATH__/task.js
         //-------------------------------------
         _task_fields="SF12_1,SF12_2,SF12_3,SF12_4,SF12_5,SF12_6,SF12_7,SF12_8,SF12_9,SF12_10,SF12_11,SF12_12";
-        _fields="_Form|form_module,Status|S2,Notes|NT,Participant,"+_task_fields;
+        _fields="_Form,Status|S3,Notes|NT,Participant,"+_task_fields;
         _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
         //-------------------------------------
         $('#D__ID').on('load',function(){  _set_req(); _request_data(); })
@@ -22,6 +22,7 @@
         _before_submit=function(record,dbv){
             return _set_status_and_participant(record,dbv);
         }
+		//-------------------------------------
     }
 </script>
 <style>

@@ -101,8 +101,11 @@ var _default_cell_render=function(records,I,field,td,set_value,source){
             var value=records[I][field];  if(value==="") value='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
             td.html("<u style='cursor:pointer;color:"+color+"'>"+value+"</u>");
             td.find('u').on('click',function(){
+				var pid=$vm.module_list[$vm.vm['__ID'].name].table_id;
+				$vm.nav_load_module(prefix+'edc-notes',$vm.root_layout_content_slot,{record:records[I],pid:pid,task_module:$vm.vm['__ID'].name});
+				/*
                 var visit_task=$vm.module_list[$vm.vm['__ID'].name].notes;
-                $vm.load_module_by_name(prefix+'clinical_trials_notes',$vm.root_layout_content_slot,{
+                $vm.load_module_by_name(prefix+'edc-notes',$vm.root_layout_content_slot,{
                     task_record_uid:_records[I].UID,
                     task_record_pid:_db_pid,
                     //task_name:task_name,
@@ -111,6 +114,7 @@ var _default_cell_render=function(records,I,field,td,set_value,source){
                     Participant_uid:_records[I].Participant_uid,
                     sql_where:" PPID="+_db_pid+ "and PUID="+_records[I].UID,
                 });
+				*/
             });
             break;
     }
