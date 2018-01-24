@@ -5,23 +5,28 @@
     function F__ID(){
         //-------------------------------------
         VmInclude:__COMPONENT__/grid/grid.v3.js
+
         VmInclude:__CURRENT_PATH__/task.js
         //-------------------------------------
-        _task_fields="A,B,C";
-        _fields="_Form,Status|S3,Notes|NT,Participant,"+_task_fields;
+        _task_fields="IIEQ_1,IIEQ_2,IIEQ_3,IIEQ_4,IIEQ_5,IIEQ_6,IIEQ_7,IIEQ_8,IIEQ_9,IIEQ_10,IIEQ_11,IIEQ_12,IIEQ_13,IIEQ_14,IIEQ_15,IIEQ_16,IIEQ_17,IIEQ_18,IIEQ_19,IIEQ_20";
+        _fields="_Form|form_module,Status|S3,Notes|NT,Participant,"+_task_fields;
         _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
         //-------------------------------------
         $('#D__ID').on('load',function(){  _set_req(); _request_data(); })
         $('#D__ID').on('back',function(){  _set_req(); _request_data(); })
         //-------------------------------------
         _cell_render=function(records,I,field,td,set_value,source){
+            switch(field){
+            }
             _default_cell_render(records,I,field,td,set_value,source);
         }
         //-------------------------------------
         _before_submit=function(record,dbv){
+/*            record.IIEQ_DS=((parseInt(record.IIEQ_3)+parseInt(record.IIEQ_5)+parseInt(record.IIEQ_10)+parseInt(record.IIEQ_13)+parseInt(record.IIEQ_16)+parseInt(record.IIEQ_17)+parseInt(record.IIEQ_21))*2).toString();
+            record.IIEQ_AS=((parseInt(record.IIEQ_2)+parseInt(record.IIEQ_4)+parseInt(record.IIEQ_7)+parseInt(record.IIEQ_9)+parseInt(record.IIEQ_15)+parseInt(record.IIEQ_19)+parseInt(record.IIEQ_20))*2).toString();
+            record.IIEQ_SS=((parseInt(record.IIEQ_1)+parseInt(record.IIEQ_6)+parseInt(record.IIEQ_8)+parseInt(record.IIEQ_11)+parseInt(record.IIEQ_12)+parseInt(record.IIEQ_14)+parseInt(record.IIEQ_18))*2).toString();
             return _set_status_and_participant(record,dbv);
-        }
-        //-------------------------------------
+*/        }
     }
 </script>
 <style>

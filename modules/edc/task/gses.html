@@ -8,7 +8,7 @@
 
         VmInclude:__CURRENT_PATH__/task.js
         //-------------------------------------
-        _task_fields="gses_1,SES2,SES3,SES4,SES5,SES6,SES7,SES8,SES9,SES10,SES";
+        _task_fields="gses_1,gses_2,gses_3,gses_4,gses_5,gses_6,gses_7,gses_8,gses_9,gses_10,gses";
         _fields="_Form,Status|S3,Notes|NT,Participant,"+_task_fields;
         _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
         //-------------------------------------
@@ -17,7 +17,7 @@
         //-------------------------------------
         _cell_render=function(records,I,field,td,set_value,source){
             switch(field){
-                case 'SES':
+                case 'gses':
                     records[I].vm_readonly[field]=true;
                 break;
             }
@@ -25,7 +25,7 @@
         }
         //-------------------------------------
         _before_submit=function(record,dbv){
-            record.SES=(parseInt(record.SES1)+parseInt(record.SES2)+parseInt(record.SES3)+parseInt(record.SES4)+parseInt(record.SES5)+parseInt(record.SES6)+parseInt(record.SES7)+parseInt(record.SES8)+parseInt(record.SES9)+parseInt(record.SES10)).toString();
+            record.gses=(parseInt(record.gses_1)+parseInt(record.gses_2)+parseInt(record.gses_3)+parseInt(record.gses_4)+parseInt(record.gses_5)+parseInt(record.gses_6)+parseInt(record.gses_7)+parseInt(record.gses_8)+parseInt(record.gses_9)+parseInt(record.gses_10)).toString();
             return _set_status_and_participant(record,dbv);
         }
     }
