@@ -8,8 +8,8 @@
 
         VmInclude:__CURRENT_PATH__/task.js
         //-------------------------------------
-        _task_fields="IEUQ_1,IEUQ_2,IEUQ_3,IEUQ_4,IEUQ_5,IEUQ_6,IEUQ_7,IEUQ_8,IEUQ_9,IEUQ_10,IEUQ_11,IEUQ_12,IEUQ_13,IEUQ_14,IEUQ_15";
-        _fields="_Form|form_module,Status|S3,Notes|NT,Participant,"+_task_fields;
+        _task_fields="ieuq_1,ieuq_2,ieuq_3,ieuq_4,ieuq_5,ieuq_6,ieuq_7,ieuq_8,ieuq_9,ieuq_10,ieuq_11,ieuq_12,ieuq_13,ieuq_14,ieuq_15";
+        _fields="_Form,Status|S3,Notes|NT,Participant,"+_task_fields;
         _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete,_Hidden|Participant_uid";
         //-------------------------------------
         $('#D__ID').on('load',function(){  _set_req(); _request_data(); })
@@ -22,11 +22,8 @@
         }
         //-------------------------------------
         _before_submit=function(record,dbv){
-/*            record.IEUQ_DS=((parseInt(record.IEUQ_3)+parseInt(record.IEUQ_5)+parseInt(record.IEUQ_10)+parseInt(record.IEUQ_13)+parseInt(record.IEUQ_16)+parseInt(record.IEUQ_17)+parseInt(record.IEUQ_21))*2).toString();
-            record.IEUQ_AS=((parseInt(record.IEUQ_2)+parseInt(record.IEUQ_4)+parseInt(record.IEUQ_7)+parseInt(record.IEUQ_9)+parseInt(record.IEUQ_15)+parseInt(record.IEUQ_19)+parseInt(record.IEUQ_20))*2).toString();
-            record.IEUQ_SS=((parseInt(record.IEUQ_1)+parseInt(record.IEUQ_6)+parseInt(record.IEUQ_8)+parseInt(record.IEUQ_11)+parseInt(record.IEUQ_12)+parseInt(record.IEUQ_14)+parseInt(record.IEUQ_18))*2).toString();
             return _set_status_and_participant(record,dbv);
-*/        }
+        }
     }
 </script>
 <style>
