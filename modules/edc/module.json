@@ -1,7 +1,7 @@
 {
 	"modules":
 	{
-		"actaq":	{"table_id":"20011369","url":"modules/edc/task/actaq.html", "name_for_search":"Baseline - Autonomy and Competence in Technology Adoption Questionnaire "},
+		"acta-b":	{"table_id":"20011369","url":"modules/edc/task/acta.html", "name_for_search":"Baseline - Autonomy and Competence in Technology Adoption Questionnaire "},
 		"gses-b":   {"table_id":"20011370","url":"modules/edc/task/gses.html","name_for_search":"Baseline - General Self-Efficacy Scale"},
 		"isi-s":    {"table_id":"20011371","url":"modules/edc/task/isi.html","name_for_search":"Screening - Insomnia Severity Index"},
 		"isi-b":    {"table_id":"20011372","url":"modules/edc/task/isi.html","name_for_search":"Baseline - Insomnia Severity Index"},
@@ -36,6 +36,7 @@
 		"quest_list":{
 			"list":{
 				"Baseline":[
+					{"table_id":"20011369","task_name":"Baseline - Autonomy and Competence in Technology Adoption Questionnaire"},
 					{"table_id":"20011370","task_name":"Baseline - General Self-Efficacy Scale"},
 					{"table_id":"20011372","task_name":"Baseline - Insomnia Severity Index"},
 					{"table_id":"20011377","task_name":"Baseline - Epworth Sleepiness Scale"},
