@@ -32,6 +32,8 @@
 		"sf-12-6":  {"table_id":"20011397","url":"modules/edc/task/sf-12.html","name_for_search":"Week 6 - 12-item Short Form Health Survey"},
 		"ieuq-6":   {"table_id":"20011398","url":"modules/edc/task/ieuq.html","name_for_search":"Week 6 - Internet Evaluation and Utility Questionnaire"},
 		"iieq-6":   {"table_id":"20011399","url":"modules/edc/task/iieq.html","name_for_search":"Week 6 - Internet Impact and Effectiveness Questionnaire"},
+		"sus-data-6":  {"table_id":"91000094","url":"modules/edc/task/system-usability-scale-data.html","form_module":"sus-form-6"},
+		"sus-form-6":  {"table_id":"91000094","url":"modules/edc/task/system-usability-scale-form.html"},
 
 		"quest_list":{
 			"list":{
@@ -72,7 +74,8 @@
 					{"table_id":"20011395","task_name":"Week 6 - Pittsburgh sleep quality index"},
 					{"table_id":"20011397","task_name":"Week 6 - 12-item Short Form Health Survey"},
 					{"table_id":"20011398","task_name":"Week 6 - Internet Evaluation and Utility Questionnaire"},
-					{"table_id":"20011399","task_name":"Week 6 - Internet Impact and Effectiveness Questionnaire"}
+					{"table_id":"20011399","task_name":"Week 6 - Internet Impact and Effectiveness Questionnaire"},
+					{"table_id":"91000094","task_name":"Week 6 - System Usability Scale"}
 				]
 			}
 		}
