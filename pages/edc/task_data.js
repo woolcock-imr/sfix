@@ -5,11 +5,8 @@ var form_module			=prefix+this_module.form_module;
 var form_tid      		=this_module.table_id;
 //var participant_tid     =""; if($vm.module_list[prefix+'participant-data']!=undefined) participant_tid=$vm.module_list[prefix+'participant-data'].table_id;
 //var notes_tid			=""; if($vm.module_list[prefix+'edc-notes-data']!=undefined) notes_tid=$vm.module_list[prefix+'edc-notes-data'].table_id;
-
-
 var participant_pid     =""; if($vm.module_list[prefix+'participant']!=undefined) participant_pid=$vm.module_list[prefix+'participant'].table_id;
 var notes_pid			=""; if($vm.module_list[prefix+'edc-notes']!=undefined) notes_pid=$vm.module_list[prefix+'edc-notes'].table_id;
-
 //var participant_sql		="Convert(varchar,UID)+'-'+JSON_VALUE(Information,'$.Screening_ID')";
 var sql_participant		="Convert(varchar,UID)+'-'+JSON_VALUE(Information,'$.Screening_ID')";
 var site_sql_where		="";
