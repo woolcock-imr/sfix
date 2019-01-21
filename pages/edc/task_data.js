@@ -49,9 +49,20 @@ _set_req=function(){
     _req={cmd:'query_records',sql:sql,sql_n:sql_n,s1:'"'+$('#keyword__ID').val()+'"',I:$('#I__ID').text(),page_size:$('#page_size__ID').val()}
 }
 //-------------------------------------
+/*
 _set_req_export=function(i1,i2){
     _fields_e="Participant ID|ParticipantUID,Participant,"+fields
     var sql="with participant as (select Site=S1,ParticipantUID=UID,participant_sql="+participant_sql+" from [FORM-"+participant_tid+"]"+site_sql_where+" )";
+    sql+=",task as (select ID,UID,PUID,S3,Information,DateTime,Author from [FORM-"+_db_pid+"-@S1])";
+    sql+=",records as (select ID,ParticipantUID,Site,Information,Participant=participant_sql,DateTime,Author,RowNum=row_number() over (order by ID DESC) from task left join participant on PUID=ParticipantUID)";
+	sql+=" select * from records where RowNum between @I1 and @I2";
+    _req={cmd:'query_records',sql:sql,i1:i1,i2:i2}
+}
+*/
+//-------------------------------------
+_set_req_export=function(i1,i2){
+    _fields_e="Participant ID|ParticipantUID,Participant,"+fields
+    var sql="with participant as (select Site=S1,ParticipantUID=UID,participant_sql="+sql_participant+" from [FORM-"+participant_pid+"]"+site_sql_where+" )";
     sql+=",task as (select ID,UID,PUID,S3,Information,DateTime,Author from [FORM-"+_db_pid+"-@S1])";
     sql+=",records as (select ID,ParticipantUID,Site,Information,Participant=participant_sql,DateTime,Author,RowNum=row_number() over (order by ID DESC) from task left join participant on PUID=ParticipantUID)";
 	sql+=" select * from records where RowNum between @I1 and @I2";
